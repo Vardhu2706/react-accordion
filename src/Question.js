@@ -1,12 +1,24 @@
 // Importing Helpers
 import React, { useState } from "react";
-import { AiOutlineMinus, AuOutlinePlus } from "react-icons/ai";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 // Importing Components/ Files
 
 // Functional Component
-const Question = () => {
-  return <h2>Question Component</h2>;
+const Question = ({ title, info }) => {
+  const [showInfo, setShowInfo] = useState(false);
+
+  return (
+    <article className="question">
+      <header>
+        <h4>{title}</h4>
+        <button className="btn" onClick={() => setShowInfo(!showInfo)}>
+          {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
+        </button>
+      </header>
+      {showInfo && <p>{info}</p>}
+    </article>
+  );
 };
 
 // Default Export
